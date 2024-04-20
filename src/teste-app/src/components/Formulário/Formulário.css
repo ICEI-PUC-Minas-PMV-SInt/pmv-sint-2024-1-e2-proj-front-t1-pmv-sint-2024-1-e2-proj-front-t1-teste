@@ -1,0 +1,16 @@
+.form-inline{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    margin: 20px;
+    padding: 20px;
+}
+
+.container_1_formulário{
+    width: 900px;
+    border: 1px black solid;
+}
+
+.container_2_formulário{
+    width: 600px;
+    border: 1px black solid;
+}
