@@ -6,8 +6,16 @@ import {useState} from 'react';
 import Tabela from './components/Tabela/Tabela';
 
 function App() {
+  const imgInit = JSON.parse(localStorage.getItem('urlImg')) || ''; 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [urlImg, setUrlImg] = useState(imgInit);
+
+  function setImage(){
+    const urlFlor = "https://img.freepik.com/fotos-gratis/flores-roxas-em-um-vaso_1340-25662.jpg";
+    setUrlImg(urlFlor);
+    localStorage.setItem('urlImg', JSON.stringify(urlFlor));
+  }
 
   function handleUser(e){
     setUsername(e.target.value);
@@ -36,7 +44,8 @@ function App() {
           onSubmit={handleEmail}
         />
       </div> */}
-      <h1>Agenda</h1>
+      <img src={urlImg} alt="Imagem de flor" loading='lazy'></img>
+      <h1 onClick={() => setImage() }>Agenda</h1>
       <Tabela />
     </div>
   );
