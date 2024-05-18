@@ -5,6 +5,26 @@ function Tabela(){
     const history = JSON.parse(localStorage.getItem("compromissos")) || [];
     const [compromissos, setCompromissos] = useState(history);
 
+    const f1 = () => {
+        const aux = JSON.parse(localStorage.getItem("meuitem")) || 
+            {
+                "data": "",
+                "pessoa_responsavel": "",
+            };
+        aux.data = "17/05";
+        localStorage.setItem("meuitem", JSON.stringify(aux));
+    }
+
+    const f2 = () => {
+        const aux = JSON.parse(localStorage.getItem("meuitem")) || 
+            {
+                "data": "",
+                "pessoa_responsavel": "",
+            };
+        aux.pessoa_responsavel = "Harison";
+        localStorage.setItem("meuitem", JSON.stringify(aux));
+    }
+
     const handleSetCompromisso = (evt, dia) => {
         const textoCompromisso = evt.target.value;
         const aux = compromissos.slice(0);
@@ -29,6 +49,7 @@ function Tabela(){
                         </div>
                     )
                 }
+                
             </div>
         </>
     );
