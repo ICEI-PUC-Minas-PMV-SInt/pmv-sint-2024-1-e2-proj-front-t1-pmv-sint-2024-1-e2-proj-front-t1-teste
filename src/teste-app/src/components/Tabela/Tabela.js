@@ -5,22 +5,38 @@ function Tabela(){
     const history = JSON.parse(localStorage.getItem("compromissos")) || [];
     const [compromissos, setCompromissos] = useState(history);
 
-    const f1 = () => {
-        const aux = JSON.parse(localStorage.getItem("meuitem")) || 
-            {
-                "data": "",
-                "pessoa_responsavel": "",
-            };
+    const getFromStorage = (keylocalstorage) => {
+        let aux;
+        switch(keylocalstorage){
+            case "meuitem":
+                aux = JSON.parse(localStorage.getItem(keylocalstorage)) || 
+                {
+                    "data": "",
+                    "pessoa_responsavel": "",
+                };
+                break;
+            case "sanduíche":
+                aux = JSON.parse(localStorage.getItem(keylocalstorage)) ||
+                {
+                    "ID": 0,
+                    "apelido": "",
+                };
+                break;
+            default: 
+                aux = {};
+        }
+        
+        return aux;
+    };
+
+    const setObjectDate = () => {
+        const aux =  getFromStorage("meuitem");
         aux.data = "17/05";
         localStorage.setItem("meuitem", JSON.stringify(aux));
     }
 
-    const f2 = () => {
-        const aux = JSON.parse(localStorage.getItem("meuitem")) || 
-            {
-                "data": "",
-                "pessoa_responsavel": "",
-            };
+    const setObjectPerson = () => {
+        const aux =  getFromStorage("meuitem");
         aux.pessoa_responsavel = "Harison";
         localStorage.setItem("meuitem", JSON.stringify(aux));
     }
