@@ -47,7 +47,8 @@ function App() {
     <div className="App">
       {currentUser.username? <span>Bem-vindo, {currentUser.username}!</span>: <></>}
       <h1>Agenda</h1>
-      <Tabela currentUser={currentUser} />
+      {currentUser.username? <Tabela currentUser={currentUser} />: <></>}
+      
       <div className="container_1">
         <form>
           <label>Username: </label>

@@ -4,8 +4,15 @@ import './Tabela.css'
 function Tabela({ currentUser }) {
     const history = JSON.parse(localStorage.getItem("compromissos-" + currentUser.username)) || [];
     const [compromissos, setCompromissos] = useState(history);
+    const [gridStyle, setGridStyle] = useState({
+        gridTemplateColumns: `repeat(${history.length <= 5? 3:7}, auto)`
+    })
+
     useEffect(() => {
         setCompromissos(history);
+        setGridStyle({
+            gridTemplateColumns: `repeat(${history.length <= 5? 3:7}, auto)`
+        });
     }, [currentUser]);
 
     const handleSetCompromisso = (evt, dia) => {
@@ -20,8 +27,8 @@ function Tabela({ currentUser }) {
     const dias_mes = Array.from(Array(30).keys())
     return (
         <>
-            <div className='container'>
-                {dias_semana.map((dia) => <span>{dia}</span>)}
+            <div className='container'  style={gridStyle}>
+                {history.length > 5? dias_semana.map((dia) => <span>{dia}</span>) : <></>}
                 {
                     dias_mes.map(dia =>
                         <div>
